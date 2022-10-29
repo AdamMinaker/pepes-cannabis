@@ -1,24 +1,7 @@
-# README
+# Pepe's Cannabis Ecommerce
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The scope of this project is the design and development of an ecommerce website for the owner of Pepe’s Cannabis with functionality according to the requirements document and spreadsheet.
 
-Things you may want to cover:
+Pepe’s Cannabis was founded in 2015, they currently own 42 stores across Canada, and have over 200 employees. They are a licensed cannabis retailer in Canada, they sell dried cannabis flower, cannabis extracts, and accessories at brick-and-mortar locations. This website will give customers the ability to purchase these products online.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The target demographic will mostly be Millennials but anyone over the age of 18 can enjoy the benefits of cannabis products.
