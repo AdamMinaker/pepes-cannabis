@@ -77,3 +77,6 @@ gem 'bootstrap', '~> 5.0.2'
 # Add ActiveAdmin
 gem 'activeadmin'
 gem 'devise'
+
+# Add Faker
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
