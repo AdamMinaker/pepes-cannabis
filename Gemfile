@@ -73,3 +73,7 @@ end
 
 # Add Bootstrap 5
 gem 'bootstrap', '~> 5.0.2'
+
+# Add ActiveAdmin
+gem 'activeadmin'
+gem 'devise'
