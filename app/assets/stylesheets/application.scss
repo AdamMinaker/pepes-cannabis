@@ -18,5 +18,30 @@
 @import "bootstrap";
 
 a {
-  color: green;
+  color: green !important;
+}
+
+nav {
+  a {
+    text-decoration: none !important;
+  }
+}
+
+button {
+  background-image: none !important;
+}
+
+.form-control:focus {
+  border-color: green;
+  box-shadow: inset 0 1px 1px rgb(255, 255, 255), 0 0 8px rgb(0, 135, 23);
+}
+
+.search-bar {
+  width: 400px;
+}
+
+@media (max-width: 1199px) {
+  .search-bar {
+    width: 200px;
+  }
 }
