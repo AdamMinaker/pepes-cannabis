@@ -57,12 +57,22 @@ button {
   }
 }
 
+@media (max-width: 420px) {
+  .homepage-product-text {
+    font-size: 0.9em;
+  }
+
+  .homepage-product-button {
+    font-size: 0.7em;
+  }
+}
+
 .custom-footer {
   background-color: rgb(82, 82, 82);
   position: absolute;
   left: 0;
   bottom: 0;
-  height: 100px;
+  height: 80px;
   width: 100%;
   overflow: hidden;
 }
