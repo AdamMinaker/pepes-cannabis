@@ -3,12 +3,13 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    ActiveRecord::Base.connection.change_column(:users, :image, :attachment)
     @products = Product.all
   end
 
   # GET /products/1 or /products/1.json
-  def show; end
+  def show
+    @product = Product.find(params[:id])
+  end
 
   # GET /products/new
   def new

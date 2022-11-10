@@ -1,5 +1,9 @@
 <p style="color: green"><%= notice %></p>
-
+  <% if @product.image.attached?%>
+    <p>
+      <%= image_tag @product.image %>
+    </p>
+  <% end %>
 <%= render @product %>
 
 <div>
