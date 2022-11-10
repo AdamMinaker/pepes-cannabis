@@ -1,14 +1,47 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Products</h1>
 
-<div id="products">
-  <% @products.each do |product| %>
-    <%= render product %>
-    <p>
-      <%= link_to "Show this product", product %>
-    </p>
-  <% end %>
-</div>
 
-<%= link_to "New product", new_product_path %>
+<header class="py-5">
+    <div class="container px-4 px-lg-5 mt-5 mb-0">
+        <div class="text-center">
+            <h1 class="display-4 fw-bolder">Welcome!</h1>
+            <p class="lead fw-normal mb-0">Browse our wide selection of cannabis products</p>
+        </div>
+    </div>
+</header>
+
+<section class="py-5">
+  <div class="container px-4 px-lg-5 mt-5">
+    <div class="products row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+      <% @products.each do |product| %>
+        <div class="col mb-5">
+          <div class="card h-100">
+            <!-- Product image-->
+            <% if product.image.attached?%>
+              <p>
+                <%= image_tag product.image.variant(resize_to_fill: [262, 200]) %>
+              </p>
+            <% else %>
+              <p class="text-center mt-5">No product image</p>
+            <% end %>
+            <!-- Product details-->
+            <div class="card-body p-4">
+              <div class="text-center">
+                <!-- Product name-->
+                <h5 class="fw-bolder"><%= link_to product.name, product %></h5>
+                <!-- Product price-->
+                <%= number_to_currency(product.price.fdiv(100)) %>
+              </div>
+            </div>
+            <!-- Product actions-->
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+              <div class="text-center"><a class="btn btn-success text-white text-decoration-none" href="#">Add to cart</a></div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="d-flex justify-content-center"><%= paginate @products %></div>
+  </div>
+</section>
