@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_31_035106) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_31_043646) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -96,7 +96,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_31_035106) do
   end
 
 # Could not dump table "products" because of following StandardError
-#   Unknown type 'attachment' for column 'image'
+#   Unknown type '' for column 'image'
 
   create_table "users", force: :cascade do |t|
     t.string "email"
