@@ -80,3 +80,6 @@ gem 'devise'
 
 # Add Faker
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
+
+# Add Kaminari
+gem 'kaminari'
