@@ -1,7 +1,7 @@
 <p style="color: green"><%= notice %></p>
   <% if @product.image.attached?%>
     <p>
-      <%= image_tag @product.image.variant(resize_to_fill: [262, 200]), :class => "w-100" %>
+      <%= image_tag @product.image.variant(resize_to_fill: [262, 200]) %>
     </p>
   <% end %>
 <%= render @product %>

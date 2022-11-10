@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+<div id="about">
+  <div class="w-50">
+    <% @about.each do |about| %>
+      <h1><%= about.title %></h1>
+      <p><%= about.content %></p>
+    <% end %>
+  </div>
+</div>
