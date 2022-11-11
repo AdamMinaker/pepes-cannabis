@@ -13,6 +13,7 @@ ActiveAdmin.register About do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+  menu priority: 7
   menu label: "About Page"
   config.filters = false
 
