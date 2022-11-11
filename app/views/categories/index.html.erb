@@ -1,14 +1,36 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Categories</h1>
+<header class="py-5">
+    <div class="container px-4 px-lg-5 mt-5 mb-0">
+        <div class="text-center">
+            <h1 class="display-4 fw-bolder">Categories</h1>
+            <p class="lead fw-normal mb-0">Browse our wide selection of products</p>
+        </div>
+    </div>
+</header>
 
-<div id="categories">
-  <% @categories.each do |category| %>
-    <%= render category %>
-    <p>
-      <%= link_to "Show this category", category %>
-    </p>
-  <% end %>
-</div>
+<section class="py-5">
+  <div class="container px-4 px-lg-5 mt-5">
+    <div class="products row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+      <% @categories.each do |category| %>
+        <div class="col mb-5">
+          <div class="card h-100 w-100">
+            <!-- Product details-->
+            <div class="card-body p-4">
+              <div class="text-center homepage-product-text">
+                <!-- Product name-->
+                <h5 class="fw-bolder homepage-product-text"><%= category.name %></h5>
+                <h6 class="homepage-product-text"><%= category.description %></h6>
+              </div>
+            </div>
+            <!-- Product actions-->
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+              <div class="text-center"><%= link_to "See products", category %></div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
 
-<%= link_to "New category", new_category_path %>

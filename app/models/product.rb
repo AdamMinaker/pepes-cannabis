@@ -5,6 +5,6 @@ class Product < ApplicationRecord
   has_many :carts, through: :order_items
   has_many :orders, through: :order_items
   has_one_attached :image do |attachable|
-    attachable.variant :thumb, resize_to_limit: [100, 100]
+    attachable.variant :thumb, resize_to_limit: [50, 50]
   end
 end

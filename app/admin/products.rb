@@ -18,7 +18,7 @@ ActiveAdmin.register Product do
   index do
     selectable_column
     column "Image" do |product|
-      image_tag product.image.variant(resize_to_fill: [50, 50]) if product.image.attached?
+      image_tag product.image.variant(:thumb) if product.image.attached?
     end
     column "Name" do |product|
       link_to product.name, admin_product_path(product)

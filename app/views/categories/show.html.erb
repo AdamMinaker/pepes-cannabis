@@ -1,10 +1,38 @@
 <p style="color: green"><%= notice %></p>
-
-<%= render @category %>
-
-<div>
-  <%= link_to "Edit this category", edit_category_path(@category) %> |
-  <%= link_to "Back to categories", categories_path %>
-
-  <%= button_to "Destroy this category", @category, method: :delete %>
+<div class="container">
+  <%= link_to "Back", categories_path %>
+  <h1><%= @category.name %></h1>
 </div>
+<section class="py-5">
+  <div class="container px-4 px-lg-5 mt-5">
+    <div class="products row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+      <% @products.each do |product| %>
+        <div class="col mb-5">
+          <div class="card h-100 w-100">
+            <!-- Product image-->
+            <% if product.image.attached?%>
+              <p>
+                <%= image_tag product.image.variant(resize_to_fill: [262, 200]), :class => "w-100" %>
+              </p>
+            <% else %>
+              <p class="text-center mt-5">No product image</p>
+            <% end %>
+            <!-- Product details-->
+            <div class="card-body p-4">
+              <div class="text-center homepage-product-text">
+                <!-- Product name-->
+                <h5 class="fw-bolder homepage-product-text"><%= link_to product.name, product %></h5>
+                <!-- Product price-->
+                <%= number_to_currency(product.price.fdiv(100)) %>
+              </div>
+            </div>
+            <!-- Product actions-->
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+              <div class="text-center"><a class="btn btn-success text-white text-decoration-none homepage-product-button" href="#">Add to cart</a></div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
