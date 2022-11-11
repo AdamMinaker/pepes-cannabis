@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+<div id="contact">
+  <div class="w-50">
+    <% @contact.each do |contact| %>
+      <h1><%= contact.title %></h1>
+      <p><%= contact.content %></p>
+      <p><a href=<%= "mailto:" + contact.email %>><%= contact.email %></a></p>
+      <p><a href=<%= "tel:" + contact.phone %>><%= contact.phone %></a></p>
+      <p><%= contact.address %></p>
+    <% end %>
+  </div>
+</div>

@@ -14,6 +14,7 @@ ActiveAdmin.register Product do
   #   permitted
   # end
   index do
+    selectable_column
     column "Image" do |product|
       image_tag product.image.variant(resize_to_fill: [50, 50]) if product.image.attached?
     end
