@@ -8,18 +8,49 @@
 Product.destroy_all
 Category.destroy_all
 
+# Faker seed script
 4.times do
   category = Category.new(name:        Faker::Cannabis.category,
-                          description: Faker::Lorem.sentence(word_count: 15))
+                          description: Faker::ChuckNorris.fact)
   category.save
 
   25.times do
     product = Product.new(name:        Faker::Cannabis.strain,
-                          description: Faker::Lorem.sentence(word_count: 15),
+                          description: Faker::ChuckNorris.fact,
                           sku:         Faker::Number.number(digits: 10),
-                          price:       Faker::Number.number(digits: 10),
+                          price:       Faker::Number.number(digits: 5),
                           stock:       Faker::Number.number(digits: 2),
                           category:    category)
     product.save
   end
 end
+
+# .csv seed script
+require "csv"
+
+def load_csv(type)
+  csv_file = Rails.root.join("db/#{type}.csv")
+  csv_data = File.read(csv_file)
+  parsed_csv = CSV.parse(csv_data, headers: true)
+
+  # If CSV was created by Excel in Windows you may also need to set an encoding type:
+  # products = CSV.parse(csv_data, headers: true, encoding: 'iso-8859-1')
+  if type == "categories"
+    parsed_csv.each do |row|
+      record = Category.new(name: row["name"], description: row["description"])
+      record.save
+    end
+  end
+
+  if type == "products"
+    parsed_csv.each do |row|
+      category = Category.find_or_create_by(name: row["category"])
+      record = Product.new(name: row["name"], description: row["description"], category: category,
+                           sku: row["sku"], price: row["price"], stock: row["stock"])
+      record.save
+    end
+  end
+end
+
+load_csv("categories")
+load_csv("products")
