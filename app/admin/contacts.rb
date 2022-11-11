@@ -13,7 +13,7 @@ ActiveAdmin.register Contact do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-
+  menu priority: 6
   menu label: "Contact Page"
   config.filters = false
 

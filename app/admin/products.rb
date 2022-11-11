@@ -1,4 +1,5 @@
 ActiveAdmin.register Product do
+  menu priority: 2
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -25,7 +26,6 @@ ActiveAdmin.register Product do
     column :category
     column :stock
     column :sku
-    # column :price
     column "Price" do |product|
       number_to_currency(product.price.fdiv(100))
     end
