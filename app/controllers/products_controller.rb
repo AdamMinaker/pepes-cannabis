@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
     @categories = Category.all
 
     if params[:search].blank?
-      @products = Product.all.page params[:page]
+      @products = Product.all.order("created_at DESC").page params[:page]
     else
       if params[:category].blank?
         @search = params[:search].downcase
