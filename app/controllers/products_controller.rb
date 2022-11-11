@@ -3,7 +3,15 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.all.page params[:page]
+    @categories = Category.all
+
+    if params[:search].blank?
+      @products = Product.all.page params[:page]
+    else
+      @search = params[:search].downcase
+      @products = Product.all.where("lower(name) LIKE :search",
+                                    search: "%#{@search}%").order("created_at DESC").page params[:page]
+    end
   end
 
   # GET /products/1 or /products/1.json

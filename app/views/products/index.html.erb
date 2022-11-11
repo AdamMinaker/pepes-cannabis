@@ -8,9 +8,10 @@
             <h1 class="display-4 fw-bolder">Welcome!</h1>
             <p class="lead fw-normal mb-0">Browse our wide selection of products</p>
         </div>
-        <form class="mt-3" role="search">
-          <input class="form-control search-bar mx-auto" type="search" placeholder="Search" aria-label="Search">
-        </form>
+        <%= form_tag(products_path, :method => "get", :class => "d-flex mt-3") do%>
+          <%= search_field_tag :search, params[:search], placeholder: "Search products...", class: "form-control search-bar mx-auto" %>
+          <%= collection_select :category, @categories, :id, :name, include_blank: true%>
+        <% end %>
     </div>
 </header>
 
@@ -33,6 +34,7 @@
               <div class="text-center homepage-product-text">
                 <!-- Product name-->
                 <h5 class="fw-bolder homepage-product-text"><%= link_to product.name, product %></h5>
+                <h6><%= link_to product.category.name, product.category %></h6>
                 <!-- Product price-->
                 <%= number_to_currency(product.price.fdiv(100)) %>
               </div>
@@ -43,6 +45,9 @@
             </div>
           </div>
         </div>
+      <% end %>
+      <% if @products.empty? %>
+      <h4 class="text-center">No products to show</h4>
       <% end %>
     </div>
     <div class="d-flex justify-content-center"><%= paginate @products %></div>
