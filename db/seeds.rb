@@ -10,7 +10,7 @@ Category.destroy_all
 
 # Faker seed script
 4.times do
-  category = Category.new(name:        Faker::Cannabis.category,
+  category = Category.new(name:        Faker::Cannabis.category.capitalize,
                           description: Faker::ChuckNorris.fact)
   category.save
 
@@ -21,6 +21,8 @@ Category.destroy_all
                           price:       Faker::Number.number(digits: 5),
                           stock:       Faker::Number.number(digits: 2),
                           category:    category)
+    downloaded_image = URI.open("https://source.unsplash.com/600x600/?cannabis")
+    product.image.attach(io: downloaded_image, filename: "m-#{product.name}.jpg")
     product.save
   end
 end
