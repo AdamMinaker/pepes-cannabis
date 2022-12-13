@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   def add_to_cart
     id = params[:id].to_i
 
-    session[:cart] << id unless session[:cart].include?(id)
+    #session[:cart] << id unless session[:cart].include?(id)
+    #session[:cart] << {id, }
     redirect_to root_path
   end
 
@@ -15,14 +16,19 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
+  def add_quantity
+
+  end
+
+
   private
 
   def initialize_session
-    session[:visit_count] ||= 0
-    session[:cart] ||= []
+    session[:cart] ||= {}
   end
 
   def load_cart
-    @cart = Product.find(session[:cart])
+    @cart = Product.all
+    #@cart = Product.find(session[:cart])
   end
 end

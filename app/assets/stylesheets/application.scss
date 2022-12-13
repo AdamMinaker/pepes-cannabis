@@ -26,7 +26,7 @@ body {
   padding-bottom: 60px;
 }
 
-@import "bootstrap";
+@import 'bootstrap';
 
 a {
   color: green !important;
@@ -40,6 +40,13 @@ nav {
 
 button {
   background-image: none !important;
+  background: none !important;
+  background-color: transparent !important;
+  color: green !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-weight: lighter !important;
+  font-family: var(--bs-font-sans-serif) !important;
 }
 
 .form-control:focus,
