@@ -83,3 +83,7 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main
 
 # Add Kaminari
 gem 'kaminari'
+
+# Add Stripe
+gem 'stripe'
+gem 'rack-cors', :require => 'rack/cors'

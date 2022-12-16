@@ -1,0 +1,10 @@
+<%= turbo_frame_tag "cart" do %>
+  <h1>Cart</h1>
+  <% if @cart.order_items.count > 0 %>
+    <%= render "cart/order_items" %>
+    <p>Total: <%= number_to_currency(@cart.total.fdiv(100)) %></p>
+    <%= button_to 'Checkout', checkout_create_path, data: { turbo: false }, class: 'button' %>
+  <% else %>
+    <p>Your cart is empty</p>
+  <% end %>
+<% end %>

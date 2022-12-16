@@ -1,0 +1,35 @@
+<% @cart.order_items.each do |orderable| %>
+  <% product = orderable.product %>
+  <div class="row">
+    <div class="row main align-items-center">
+        <div class="col-2">
+        <% if product.image.attached?%>
+          <p>
+            <%= image_tag product.image.variant(resize_to_fill: [262, 200]), :class => "w-100", alt: product.name %>
+          </p>
+        <% else %>
+          <p class="text-center">No product image</p>
+        <% end %>
+        </div>
+        <div class="col ms-4">
+            <div class="row"><%= link_to product.category.name, product.category, :class => "text-muted small m-0" %></div>
+            <div class="row"><%= link_to product.name, product %></div>
+        </div>
+        <div class="col">
+          <%= number_to_currency(orderable.total.fdiv(100)) %>
+        </div>
+        <div class="col d-flex">
+          <%= form_with(url: cart_add_path, :html => {:class => 'd-flex', 'data-bar' => 'baz'}) do |f| %>
+          <%= f.hidden_field :id, value: product.id %>
+          <%= f.number_field :quantity, value: orderable.quantity, min: 0, class: 'w-25 ms-5' %>
+          <%= f.submit "Update", class: 'ms-4 button' %>
+          <% end %>
+          <%= form_with(url: cart_remove_path) do |f| %>
+          <%= f.hidden_field :id, value: orderable.id %>
+          <%= f.submit "Remove", class: 'h-100 button' %>
+          <% end %>
+        </div>
+    </div>
+    <div class="dropdown-divider mb-4"></div>
+  </div>
+<% end %>

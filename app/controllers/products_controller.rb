@@ -1,25 +1,25 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
 
-  # GET /products or /products.json
-  def index
-    @categories = Category.all
+# GET /products or /products.json
+def index
+  @categories = Category.all
 
-    if params[:search].blank?
-      @products = Product.all.order("created_at DESC").page params[:page]
+  if params[:search].blank?
+    @products = Product.all.order("created_at DESC").page params[:page]
+  else
+    if params[:category].blank?
+      @search = params[:search].downcase
+      @products = Product.all.where("lower(name) LIKE :search",
+                                    search: "%#{@search}%").order("created_at DESC").page params[:page]
     else
-      if params[:category].blank?
-        @search = params[:search].downcase
-        @products = Product.all.where("lower(name) LIKE :search",
-                                      search: "%#{@search}%").order("created_at DESC").page params[:page]
-      else
-        @search = params[:search].downcase
-        @category = params[:category]
-        @products = Product.all.where("lower(name) LIKE :search AND category_id = :category",
-                                      search: "%#{@search}%", category: "#{@category}").order("created_at DESC").page params[:page]
-      end
+      @search = params[:search].downcase
+      @category = params[:category]
+      @products = Product.all.where("lower(name) LIKE :search AND category_id = :category",
+                                    search: "%#{@search}%", category: "#{@category}").order("created_at DESC").page params[:page]
     end
   end
+end
 
   # GET /products/1 or /products/1.json
   def show
