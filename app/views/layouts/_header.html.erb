@@ -9,6 +9,7 @@
                 <li class="nav-item ms-1"><a class="nav-link" href="/contact">Contact</a></li>
                 <li class="nav-item ms-1"><a class="nav-link" href="/about">About</a></li>
                 <% if user_signed_in? %>
+                    <li class="nav-item ms-1"><a class="nav-link" href="/orders">Orders</a></li>
                     <li class="nav-item ms-1 mt-2"><%= button_to "Logout", destroy_user_session_path, method: :delete  %></li>
                 <% else %>
                     <li class="nav-item ms-1"><a class="nav-link" href="/users/sign_in">Login</a></li>
@@ -18,7 +19,7 @@
             <a href="/cart">
                 <i class="bi-cart-fill me-1"></i>
                 Cart
-                <span class="badge bg-success text-white rounded-pill"><%= @cart.count %></span>
+                <span class="badge bg-success text-white rounded-pill"><%= @cart.order_items.count %></span>
             </a>
         </div>
     </div>

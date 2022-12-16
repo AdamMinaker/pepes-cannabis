@@ -29,7 +29,7 @@ body {
 @import 'bootstrap';
 
 a {
-  color: green !important;
+  color: #398200 !important;
 }
 
 nav {
@@ -42,16 +42,32 @@ button {
   background-image: none !important;
   background: none !important;
   background-color: transparent !important;
-  color: green !important;
+  color: #398200 !important;
   border: none !important;
   box-shadow: none !important;
-  font-weight: lighter !important;
+  font-weight: normal !important;
   font-family: var(--bs-font-sans-serif) !important;
+}
+
+.button {
+  background-image: none !important;
+  padding: 15px;
+  background: none !important;
+  background-color: #398200 !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-weight: normal !important;
+  font-family: var(--bs-font-sans-serif) !important;
+}
+
+.button:hover {
+  background-color: green !important;
 }
 
 .form-control:focus,
 .form-select:focus {
-  border-color: green;
+  border-color: #398200;
   box-shadow: inset 0 1px 1px rgb(255, 255, 255), 0 0 8px rgb(0, 135, 23);
 }
 
